@@ -1,0 +1,9 @@
+= POMS Selector for Directus
+
+This is currently being tried as a part of a POC in our new CMS selection traject.
+
+This would be my first directus extension...
+
+See also https://github.com/mihxil/directus
+
+https://jira.vpro.nl/browse/SYS-1179
