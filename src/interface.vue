@@ -1,6 +1,8 @@
 <template>
-	<input  :value="value"  readonly="readonly"  />
-	<button type="button" @click="handleSelect()">select in poms</button>
+  <div class="pomsselector">
+    <input  :value="value"  readonly="readonly"  />
+    <button type="button" @click="handleSelect()" class="select_button">select in poms</button>
+  </div>
 </template>
 
 <script>

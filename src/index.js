@@ -1,4 +1,5 @@
 import InterfaceComponent from './interface.vue';
+import "./index.scss";
 
 export default {
 	id: 'pomsselector',
