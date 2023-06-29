@@ -1,11 +1,12 @@
-import DisplayComponent from './display.vue';
+import InterfaceComponent from './interface.vue';
 
 export default {
-	id: 'custom',
-	name: 'Custom',
+	id: 'pomsselector',
+	name: 'POMS Selector',
 	icon: 'box',
-	description: 'poms selector',
-	component: DisplayComponent,
+	description: 'selector for poms',
+	component: InterfaceComponent,
 	options: null,
 	types: ['string'],
+	recommendedDisplays: ['mid', 'media']
 };

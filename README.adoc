@@ -7,3 +7,6 @@ This would be my first directus extension...
 See also https://github.com/mihxil/directus
 
 https://jira.vpro.nl/browse/SYS-1179
+
+== Installation
+

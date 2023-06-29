@@ -6,11 +6,11 @@
 	"keywords": [
 		"directus",
 		"directus-extension",
-		"directus-custom-display"
+		"directus-custom-interface"
 	],
 	"type": "module",
 	"directus:extension": {
-		"type": "display",
+		"type": "interface",
 		"path": "dist/index.js",
 		"source": "src/index.js",
 		"host": "^10.1.5"
@@ -21,7 +21,7 @@
 		"link": "directus-extension link"
 	},
 	"devDependencies": {
-		"@directus/extensions-sdk": "10.1.5",
+		"@directus/extensions-sdk": "^10.1.0",
 		"vue": "^3.3.4"
 	}
 }
