@@ -1,0 +1,27 @@
+{
+	"name": "directus-extension-poms-selector",
+	"description": "Enter POMs data using a selector",
+	"icon": "extension",
+	"version": "1.0.0",
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-custom-display"
+	],
+	"type": "module",
+	"directus:extension": {
+		"type": "display",
+		"path": "dist/index.js",
+		"source": "src/index.js",
+		"host": "^10.1.5"
+	},
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify",
+		"link": "directus-extension link"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "10.1.5",
+		"vue": "^3.3.4"
+	}
+}
