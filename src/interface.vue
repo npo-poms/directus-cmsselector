@@ -1,8 +1,9 @@
-<template>
-  <div class="pomsselector">
-    <input  :value="value"  readonly="readonly"  />
-    <button type="button" @click="handleSelect()" class="select_button">select in poms</button>
-  </div>
+<template class="pomsselector">
+  <v-input 
+           :model-value="value"
+           @update:model-value="$emit('input', $event)"
+           :full-width="true" />
+  <v-button @click="handleSelect()">select in poms</v-button>
 </template>
 
 <script>
@@ -24,9 +25,11 @@ export default {
 
 		function handleSelect() {
 			nl_vpro_media_CMSSelector.select(function (value) {
+        console.log("emmtiing", value);
 				  emit('input', value);
 			}, {mediaType: "CLIP"});
 		}
 	},
 };
 </script>
+ 
