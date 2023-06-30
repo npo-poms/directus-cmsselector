@@ -36,9 +36,9 @@
     emits: ['input', 'setFieldValue'], 
     setup(props, { emit }) {
 
-      if (typeof media === "undefined") {
+      if (typeof nl_vpro_media_CMSSelector === "undefined") {
         let pomsSelectorScript = document.createElement('script')
-        pomsSelectorScript.setAttribute('src', 'https://poms-acc.omroep.nl/CMSSelector/media.js')
+        pomsSelectorScript.setAttribute('src', 'https://poms-acc.omroep.nl/CMSSelector/media2.js')
         document.head.appendChild(pomsSelectorScript)
       }
       
@@ -46,7 +46,7 @@
       
       function handleSelect() {
         console.log("props", props)
-          media.select(function (data) {
+          nl_vpro_media_CMSSelector.select(function (data) {
           emit('input', data.mid);
         }, {
             mediaType: props.mediaType,
