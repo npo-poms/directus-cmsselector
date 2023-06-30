@@ -50,7 +50,7 @@
           emit('input', data.mid);
         }, {
             mediaType: props.mediaType,
-            'properties.writable': props.writeable,
+            'properties.writable': props.writable,
             avType: props.avType,
             returnValue: 'data'
         });
