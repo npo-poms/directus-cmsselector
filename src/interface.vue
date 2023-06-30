@@ -13,8 +13,6 @@
 </template>
 
 <script lang="js">
-  import { useApi, useStores } from '@directus/extensions-sdk';
-
   export default {
     props: {
       value: {
