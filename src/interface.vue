@@ -1,35 +1,61 @@
 <template class="pomsselector">
   <v-input 
            :model-value="value"
+           clickeable
+           readonly
+           placeholder="<mid>"
            @update:model-value="$emit('input', $event)"
            :full-width="true" />
-  <v-button @click="handleSelect()">select in poms</v-button>
+  <v-button @click="handleSelect() ">select in poms</v-button>
+  <!--
+  <v-span :model-value="data">mediaType: {{ data.mediaType }}</v-span>
+  -->
 </template>
 
-<script>
-export default {
-	props: {
-		value: {
-			type: String,
-			default: "<mid>",
-		},
-	},
-	emits: ['input'],
-	setup(props, { emit }) {
-		if (typeof nl_vpro_media_CMSSelector === "undefined") {
-			let pomsSelectorScript = document.createElement('script')
-			pomsSelectorScript.setAttribute('src', 'https://poms-acc.omroep.nl/CMSSelector/media2.js')
-			document.head.appendChild(pomsSelectorScript)
-		}
-		return { handleSelect };
+<script lang="js">
+  import { useApi, useStores } from '@directus/extensions-sdk';
 
-		function handleSelect() {
-			nl_vpro_media_CMSSelector.select(function (value) {
-        console.log("emmtiing", value);
-				  emit('input', value);
-			}, {mediaType: "CLIP"});
-		}
-	},
-};
+  export default {
+    props: {
+      value: {
+        type: String
+      },
+      mediaType: {
+        type: String,
+        default: undefined
+      },
+      writable: {
+        type: Boolean,
+        default: true
+      },
+      avType: {
+        type: String,
+        default: undefined
+      },
+    },
+    emits: ['input', 'setFieldValue'], 
+    setup(props, { emit }) {
+
+      if (typeof media === "undefined") {
+        let pomsSelectorScript = document.createElement('script')
+        pomsSelectorScript.setAttribute('src', 'https://poms-acc.omroep.nl/CMSSelector/media.js')
+        document.head.appendChild(pomsSelectorScript)
+      }
+      
+      return { handleSelect };
+      
+      function handleSelect() {
+        console.log("props", props)
+          media.select(function (data) {
+          emit('input', data.mid);
+        }, {
+            mediaType: props.mediaType,
+            'properties.writable': props.writeable,
+            avType: props.avType,
+            returnValue: 'data'
+        });
+      }
+    },
+  };
 </script>
  
