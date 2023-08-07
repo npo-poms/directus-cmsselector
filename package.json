@@ -2,7 +2,7 @@
 	"name": "directus-extension-poms-selector",
 	"description": "Enter POMs data using a selector",
 	"icon": "extension",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"keywords": [
 		"directus",
 		"directus-extension",
