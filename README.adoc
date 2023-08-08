@@ -19,6 +19,61 @@ It is made available as an https://www.npmjs.com/package/directus-extension-poms
 
 The field type interface will appear. And can be configured with several options of the Poms Selector itself.
 
+It it e.g. deployed in docker like this:
+
+.package.json
+[source, json]
+----
+{
+  "dependencies": {
+    "directus-extension-poms-selector": "^0.2.0"
+  }
+}
+
+----
+
+.Dockerfile
+[source, docker]
+----
+FROM node:18-alpine AS builder
+
+WORKDIR /builder
+COPY package.json package-lock.json /builder
+RUN npm install  
+
+FROM directus/directus:10
+
+ENV NODE_ENV test
+ENV KEY directus-poc
+ENV SECRET secret
+ENV DB_CLIENT 'sqlite3'
+ENV DB_FILENAME '/data/database'
+ENV EXTENSIONS_PATH '/directus/extensions'
+ENV STORAGE_LOCAL_ROOT '/data/uploads'
+
+ENV CONTENT_SECURITY_POLICY_DIRECTIVES__SCRIPT_SRC="'self' 'unsafe-eval' https://poms-acc.omroep.nl https://poms.omroep.nl"
+
+EXPOSE 8055
+VOLUME "/data"
+
+COPY start.sh /directus/start.sh
+
+USER root
+
+RUN  rmdir /directus/database /directus/uploads && \
+     chmod +x /directus/start.sh
+
+COPY --from=builder /builder/node_modules/directus-extension-poms-selector/dist ${EXTENSIONS_PATH}/interfaces/poms-selector
+ 
+
+# set to numeric id of user node
+USER 1000
+
+ENTRYPOINT ["/directus/start.sh"]
+----
+
+So, the extension is copied into the extension directory. Furthermore, it is important to allow the needed javascript from the poms domain to be loaded, via the security policy setting.
+
 
 == TODO
 
