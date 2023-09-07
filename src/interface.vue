@@ -37,7 +37,7 @@
       if (typeof nl_vpro_media_CMSSelector === "undefined") {
         let pomsSelectorScript = document.createElement('script')
         // TODO: This URL needs to be configurable
-        pomsSelectorScript.setAttribute('src', 'https://poms-acc.omroep.nl/CMSSelector/media2.js')
+        pomsSelectorScript.setAttribute('src', 'https://poms.omroep.nl/CMSSelector/media2.js')
         document.head.appendChild(pomsSelectorScript)
       }
       
